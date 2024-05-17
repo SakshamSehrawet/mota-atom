@@ -8,7 +8,8 @@ import prisma from "./lib/prisma";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
   theme: {
-    logo: "/logo.png",
+    colorScheme: "auto",
+    logo: "/logoIconDark.png",
   },
   adapter: PrismaAdapter(prisma) as Adapter,
   callbacks: {

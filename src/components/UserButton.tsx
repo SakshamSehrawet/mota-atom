@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { ThemeToggle } from "./theme-toggle";
 
 interface UserButtonProps {
   user: User;
@@ -34,7 +35,12 @@ export default function UserButton({ user }: UserButtonProps) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>{user.name || "User"}</DropdownMenuLabel>
+        <DropdownMenuLabel>
+          <div className="flex items-center justify-center gap-5">
+            {user.name || "User"}
+              <ThemeToggle />
+          </div>
+          </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
