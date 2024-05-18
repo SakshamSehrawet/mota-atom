@@ -36,9 +36,8 @@ export default function UserButton({ user }: UserButtonProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>
-          <div className="flex items-center justify-center gap-5">
+          <div className="flex items-center gap-5">
             {user.name || "User"}
-              <ThemeToggle />
           </div>
           </DropdownMenuLabel>
         <DropdownMenuSeparator />
