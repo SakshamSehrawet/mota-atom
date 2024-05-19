@@ -1,12 +1,10 @@
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 import ThemedImage from "@/components/theme/ThemedImage";
-import Background from "@/components/Background";
 
 export default async function Home() {
   const users = await prisma.user.findMany();
   return (
-    <Background>
       <main className="flex min-h-screen flex-col items-center gap-6 px-3 py-10">
         <h1 className="text-center text-4xl font-bold"></h1>
         <ThemedImage
@@ -27,6 +25,5 @@ export default async function Home() {
           ))}
         </ul>
       </main>
-    </Background>
   );
 }

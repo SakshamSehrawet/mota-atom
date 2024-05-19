@@ -76,10 +76,10 @@
 }
 @layer base {
   #gradient-canvas {
-    --gradient-color-1: #c3e4ff;
-    --gradient-color-2: #6ec3f4;
-    --gradient-color-3: #eae2ff;
-    --gradient-color-4: #b9beff;
+    --gradient-color-1: #ff8b7e;
+    --gradient-color-2: #e24e6b;
+    --gradient-color-3: #7ed2da;
+    --gradient-color-4: #8bdce0;
     position: absolute;
     top: 0;
     left: 0;
@@ -88,10 +88,10 @@
     z-index: -1;
   }
   .dark #gradient-canvas {
-    --gradient-color-1: #ff008c;
-    --gradient-color-2: #d309e1;
-    --gradient-color-3: #9c1aff;
-    --gradient-color-4: #5800ff;
+    --gradient-color-1: #6c0b00;
+    --gradient-color-2: #5f0013;
+    --gradient-color-3: #000000;
+    --gradient-color-4: #012f32;
     position: absolute;
     top: 0;
     left: 0;

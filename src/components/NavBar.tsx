@@ -21,6 +21,7 @@ import {
   NavigationMenu,
 } from "@/components/ui/navigation-menu";
 import { ThemeToggle } from "./theme/theme-toggle";
+import { ReactNode } from "react";
 
 export default function NavBar() {
   const session = useSession();
@@ -29,8 +30,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className="frosted fixed left-1/2 top-4 z-50 flex h-24
-    w-11/12 min-w-[350px] shrink-0 -translate-x-1/2 transform items-center gap-3 rounded-lg border border-white border-opacity-30 bg-white bg-opacity-10 p-4 shadow-lg backdrop-blur-lg sm:w-10/12 md:w-3/4 lg:w-2/3 xl:w-1/2"
+      className="frosted fixed left-1/2 top-4 z-50 flex h-24 w-11/12 min-w-[350px] shrink-0 -translate-x-1/2 transform items-center gap-3 rounded-full border border-white border-opacity-30 bg-white bg-opacity-10 p-4 shadow-lg backdrop-blur-lg sm:w-10/12 md:w-10/12 lg:w-2/3 xl:w-1/2"
     >
       {user && session.status !== "loading" && (
         <Sheet>
@@ -39,7 +39,7 @@ export default function NavBar() {
               <MenuIcon className="h-9 w-9" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left">
+          <SheetContent side="left" className="frosted border border-white border-opacity-30 bg-white bg-opacity-10 p-4 shadow-lg backdrop-blur-lg">
             <Link className="flex items-center gap-2" href="/">
               <ThemedImage
                 darkSrc={"/logoIconDark.png"}
@@ -50,36 +50,16 @@ export default function NavBar() {
               />
             </Link>
             <div className="grid gap-2 py-6">
-              <Link
-                className="flex w-full items-center py-2 text-xl font-semibold"
-                href="#"
-              >
-                Home
-              </Link>
-              <Link
-                className="flex w-full items-center py-2 text-xl font-semibold"
-                href="#"
-              >
-                Contests
-              </Link>
-              <Link
-                className="flex w-full items-center py-2 text-xl font-semibold"
-                href="#"
-              >
-                Weight
-              </Link>
-              <Link
-                className="flex w-full items-center py-2 text-xl font-semibold"
-                href="#"
-              >
-                Dashboard
-              </Link>
+                <StyledLink href="/">Home</StyledLink>
+                <StyledLink href="/">Weight</StyledLink>
+                <StyledLink href="/">Contests</StyledLink>
+                <StyledLink href="/">Dashboard</StyledLink>
             </div>
           </SheetContent>
         </Sheet>
       )}
       <Link
-        className="flex-grow justify-center align-middle sm:flex-grow-0 md:flex-grow-0 lg:flex-grow-0"
+        className="flex flex-shrink-0 justify-center align-middle sm:flex-grow-0 md:flex-grow-0 lg:flex-grow-0"
         href="/"
       >
         <ThemedImage
@@ -96,42 +76,22 @@ export default function NavBar() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuLink asChild>
-                <Link
-                  className="data-[state=open]:bg-accent-100/50 group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-xl font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-                  href="#"
-                >
-                  Home
-                </Link>
+                <StyledLink href="/">Home</StyledLink>
               </NavigationMenuLink>
               <NavigationMenuLink asChild>
-                <Link
-                  className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-xl font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-                  href="#"
-                >
-                  Contests
-                </Link>
+                <StyledLink href="/weight">Weight</StyledLink>
               </NavigationMenuLink>
               <NavigationMenuLink asChild>
-                <Link
-                  className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-xl font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-                  href="#"
-                >
-                  Weight
-                </Link>
+                <StyledLink href="/contests">Contests</StyledLink>
               </NavigationMenuLink>
               <NavigationMenuLink asChild>
-                <Link
-                  className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-xl font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-                  href="#"
-                >
-                  Dashboard
-                </Link>
+                <StyledLink href="/dashboard">Dashboard</StyledLink>
               </NavigationMenuLink>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
       )}
-      <div className="ml-auto flex gap-3">
+      <div className="ml-auto flex items-center gap-3">
         <ThemeToggle />
         {user && <UserButton user={user} />}
         {user && session.status == "loading" && (
@@ -142,7 +102,25 @@ export default function NavBar() {
     </nav>
   );
 }
+interface StyledLinkProps {
+  href: string;
+  children: ReactNode;
+}
+function StyledLink({ href, children } : StyledLinkProps) {
+  return (
+    
+    <Link
+      href={href}
+      className="group inline-flex h-10 items-center justify-center rounded-lg border border-white border-opacity-30 bg-white bg-opacity-10 px-4 py-2 text-xl font-medium text-black transition-colors hover:bg-opacity-20 focus:bg-opacity-20 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:text-white dark:bg-opacity-10 dark:hover:bg-opacity-20 dark:focus:bg-opacity-20"
+    >
+      <div className="relative after:absolute after:bg-gray-200 after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300">
+
+      {children}</div>
+    </Link>
+  );
+}
 
 function SignInButton() {
   return <Button onClick={() => signIn()}>Sign in</Button>;
 }
+

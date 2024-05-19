@@ -14,7 +14,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { ThemeToggle } from "./theme/theme-toggle";
 
 interface UserButtonProps {
   user: User;
