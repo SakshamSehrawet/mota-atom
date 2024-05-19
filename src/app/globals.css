@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -25,6 +24,23 @@
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
     --radius: 0.5rem;
+    --secondary-glow: conic-gradient(
+      from 10deg at 50% 50%,
+      #eb7494 0deg,
+      #ae77b2 55deg,
+      #97b5da 120deg,
+      #0099ca 160deg,
+      transparent 360deg
+    );
+
+    --third-glow: conic-gradient(
+      from 90deg at 50% 50%,
+      #ff8b7e 0deg,
+      #e24e6b 160deg,
+      #7ed2da 120deg,
+      #8bdce0 55deg,
+      transparent 360deg
+    );
   }
 
   .dark {
@@ -50,12 +66,37 @@
   }
 }
 
-
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+@layer base {
+  #gradient-canvas {
+    --gradient-color-1: #c3e4ff;
+    --gradient-color-2: #6ec3f4;
+    --gradient-color-3: #eae2ff;
+    --gradient-color-4: #b9beff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  .dark #gradient-canvas {
+    --gradient-color-1: #ff008c;
+    --gradient-color-2: #d309e1;
+    --gradient-color-3: #9c1aff;
+    --gradient-color-4: #5800ff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
   }
 }
