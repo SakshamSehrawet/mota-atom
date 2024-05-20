@@ -73,3 +73,19 @@ model VerificationToken {
   @@id([identifier, token])
   @@map("verification_tokens")
 }
+model Contest {
+  id   Int    @id @default(autoincrement())
+  slug String @unique
+  admin String
+  type String
+  needApproval Boolean @default(false)
+  title String
+  description String?
+  logo String? @default("./logoIconLight.png")
+  start DateTime
+  end DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contests")
+}

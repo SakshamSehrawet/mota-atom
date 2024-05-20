@@ -5,6 +5,12 @@ const nextConfig = {
       {
         hostname: "lh3.googleusercontent.com",
       },
+      {
+        hostname: "an03zndvyobzyftt.public.blob.vercel-storage.com",
+      },
+      {
+        hostname: "api.dicebear.com",
+      },
     ],
   },
 };

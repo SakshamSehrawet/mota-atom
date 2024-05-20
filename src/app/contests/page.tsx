@@ -2,6 +2,7 @@ import getSession from "@/lib/getSession";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import ContestsPage from "./ContestsPage";
+import BrowseContestsTab from "./tabs/browse/BrowseContestsTab";
 
 export const metadata: Metadata = {
   title: "Contests",
@@ -15,5 +16,10 @@ export default async function Page() {
     redirect("/api/auth/signin?callbackUrl=/contests");
   }
 
-  return <ContestsPage user={user} />;
+  return (
+    <div>
+      <ContestsPage user={user} />
+      <BrowseContestsTab/>
+    </div>
+  );
 }
