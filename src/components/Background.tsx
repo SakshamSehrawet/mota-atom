@@ -15,11 +15,11 @@ const Background: React.FC<CanvasProps> = ({ children }) => {
   }, [theme]);
 
   return (
-    <div className="min-h-screen" style={{ position: "relative", width: "100%", height: "100%" }}>
+    <div className="min-h-screen" style={{ width: "100%", height: "100%", minWidth: "350px",minHeight: "100vh" }}>
       {theme == "dark" ? (
-        <canvas id="gradient-canvas" data-transition-in />
+        <canvas id="gradient-canvas" style={{ minWidth: "350px",minHeight: "100vh"}} data-transition-in />
       ) : (
-        <canvas id="gradient-canvas" data-transition-in />
+        <canvas id="gradient-canvas" style={{ minWidth: "350px",minHeight: "100vh"}} data-transition-in />
       )}
       <div style={{ zIndex: 10 }}>{children}</div>
     </div>

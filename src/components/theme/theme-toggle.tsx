@@ -24,8 +24,8 @@ export function ThemeToggle() {
         pressed={enabled}
         onPressedChange={toggleTheme}
         variant={"outline"}
-        className="rounded-full h-10 w-10 data-[state=on]:bg-transparent">
-          <SunMoon className="w-5 h-5"></SunMoon>
+        className="rounded-full h-10 w-10 hover:bg-background dark:hover:bg-background data-[state=on]:bg-transparent">
+          <SunMoon strokeWidth={1} className="h-8 w-8"></SunMoon>
       </Toggle>
     </div>
   )

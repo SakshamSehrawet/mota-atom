@@ -1,31 +1,26 @@
-"use client";
-import { ChevronRightIcon, Loader2, MenuIcon } from "lucide-react";
+"use client"
+import { EllipsisVertical, Loader2, MenuIcon } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import UserButton from "./UserButton";
 import { Button } from "./ui/button";
-import { useTheme } from "next-themes";
 import ThemedImage from "./theme/ThemedImage";
-import { SheetTrigger, SheetContent, Sheet } from "@/components/ui/sheet";
-import {
-  CollapsibleTrigger,
-  CollapsibleContent,
-  Collapsible,
-} from "@/components/ui/collapsible";
 import {
   NavigationMenuLink,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
-  NavigationMenuItem,
   NavigationMenuList,
   NavigationMenu,
 } from "@/components/ui/navigation-menu";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from "./theme/theme-toggle";
 import { ReactNode } from "react";
 
 export default function NavBar() {
   const session = useSession();
-  const { theme } = useTheme();
   const user = session.data?.user;
 
   return (
@@ -33,30 +28,29 @@ export default function NavBar() {
       className="frosted fixed left-1/2 top-4 z-50 flex h-24 w-11/12 min-w-[350px] shrink-0 -translate-x-1/2 transform items-center gap-3 rounded-full border border-white border-opacity-30 bg-white bg-opacity-10 p-4 shadow-lg backdrop-blur-lg sm:w-10/12 md:w-10/12 lg:w-2/3 xl:w-1/2"
     >
       {user && session.status !== "loading" && (
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button className="md:hidden lg:hidden" size="icon" variant="ghost">
-              <MenuIcon className="h-9 w-9" />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button className="md:hidden lg:hidden rounded-full h-10 w-10 bg-transparent hover:bg-transparent" size="icon" variant="outline">
+              <EllipsisVertical strokeWidth={1} className="h-8 w-8" />
             </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="frosted border border-white border-opacity-30 bg-white bg-opacity-10 p-4 shadow-lg backdrop-blur-lg">
-            <Link className="flex items-center gap-2" href="/">
-              <ThemedImage
-                darkSrc={"/logoIconDark.png"}
-                lightSrc={"/logoIconLight.png"}
-                alt="Mota.atoM"
-                width={40}
-                height={40}
-              />
-            </Link>
-            <div className="grid gap-2 py-6">
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="frosted border border-white border-opacity-30 bg-white bg-opacity-30 p-4 shadow-lg backdrop-blur-lg">
+            <div className="grid gap-5 py-6">
+              <DropdownMenuItem asChild>
                 <StyledLink href="/">Home</StyledLink>
-                <StyledLink href="/">Weight</StyledLink>
-                <StyledLink href="/">Contests</StyledLink>
-                <StyledLink href="/">Dashboard</StyledLink>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <StyledLink href="/weight">Weight</StyledLink>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <StyledLink href="/contests">Contests</StyledLink>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <StyledLink href="/dashboard">Dashboard</StyledLink>
+              </DropdownMenuItem>
             </div>
-          </SheetContent>
-        </Sheet>
+          </DropdownMenuContent>
+        </DropdownMenu>
       )}
       <Link
         className="flex flex-shrink-0 justify-center align-middle sm:flex-grow-0 md:flex-grow-0 lg:flex-grow-0"
@@ -111,7 +105,7 @@ function StyledLink({ href, children } : StyledLinkProps) {
     
     <Link
       href={href}
-      className="group inline-flex h-10 items-center justify-center rounded-lg border border-white border-opacity-30 bg-white bg-opacity-10 px-4 py-2 text-xl font-medium text-black transition-colors hover:bg-opacity-20 focus:bg-opacity-20 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:text-white dark:bg-opacity-10 dark:hover:bg-opacity-20 dark:focus:bg-opacity-20"
+      className="group inline-flex h-10 items-center justify-center rounded-lg px-4 py-2 text-xl font-medium transition-colors hover:bg-opacity-20 focus:bg-opacity-20 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:bg-opacity-10 dark:hover:bg-opacity-20 dark:focus:bg-opacity-20"
     >
       <div className="relative after:absolute after:bg-gray-200 after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300">
 
