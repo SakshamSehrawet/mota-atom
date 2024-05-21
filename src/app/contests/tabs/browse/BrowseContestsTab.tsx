@@ -1,13 +1,12 @@
 import ContestsFilter from "./ContestsFilter";
 import ContestCard from "./ContestCard";
-import prisma from "@/lib/prisma";
 import { Suspense } from "react";
+import { Contest } from "@prisma/client";
+interface BrowseContestsTabProps {
+  contests:Contest[];
+}
 
-export default async function BrowseContestsTab() {
-  const contests = await prisma.contest.findMany({
-		where : {},
-		orderBy : {createdAt : "desc"}
-	})
+const BrowseContestsTab: React.FC<BrowseContestsTabProps> = ({ contests }) => {
   return (
     <main className="p-3">
         <section className="mx-auto max-w-7xl space-y-6">
@@ -28,3 +27,4 @@ export default async function BrowseContestsTab() {
     </main>
   );
 }
+export default BrowseContestsTab;

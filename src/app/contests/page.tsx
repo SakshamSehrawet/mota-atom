@@ -1,8 +1,18 @@
+import { ReactNode } from "react";
 import getSession from "@/lib/getSession";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import ContestsPage from "./ContestsPage";
 import BrowseContestsTab from "./tabs/browse/BrowseContestsTab";
+import prisma from "@/lib/prisma";
+import { getContests } from "@/lib/getContests";
+import {
+  UserRoundCog,
+  Trophy,
+  Plus,
+} from "lucide-react";
+import BottomBar from "@/components/bottom-bar/BottomBar";
+import { Contest } from "@prisma/client";
 
 export const metadata: Metadata = {
   title: "Contests",
@@ -16,10 +26,22 @@ export default async function Page() {
     redirect("/api/auth/signin?callbackUrl=/contests");
   }
 
+  const contests: Contest[] = await prisma.contest.findMany({
+    where: {},
+    orderBy: { createdAt: "desc" },
+  });
+  const barMappings: { tooltip: string; icon: ReactNode; content: ReactNode }[] =
+  [
+    { tooltip: "Browse Contests", icon: <Trophy />, content: <div><BrowseContestsTab contests={contests}/></div>},
+    { tooltip: "My Contests", icon: <UserRoundCog />, content: <div>Settings Content</div> },
+    { tooltip: "Create Contest", icon: <Plus />, content: <div>Create Content</div> },
+  ]
+
   return (
     <div>
-      <ContestsPage user={user} />
-      <BrowseContestsTab/>
+      {/* <ContestsPage user={user} /> */}
+      
+      <BottomBar barMappings={barMappings}/>
     </div>
   );
 }

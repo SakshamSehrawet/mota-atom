@@ -1,7 +1,7 @@
 "use client"
 import { useTheme } from 'next-themes';
 import Image, { ImageProps } from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
 interface ThemedImageProps extends Omit<ImageProps, 'src'> {
   lightSrc: string;
@@ -9,19 +9,18 @@ interface ThemedImageProps extends Omit<ImageProps, 'src'> {
 }
 
 const ThemedImage: React.FC<ThemedImageProps> = ({ lightSrc, darkSrc, alt, ...rest }) => {
-  const { theme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  const selectedSrc = useMemo(() => {
+    return resolvedTheme === 'light' ? lightSrc : darkSrc;
+  }, [resolvedTheme, lightSrc, darkSrc]);
+
   if (!mounted) return null;
-
-  const selectedSrc = resolvedTheme === 'light' ? lightSrc : darkSrc;
-
-  console.log(`Current theme: ${resolvedTheme}`);
-  console.log(`Selected src: ${selectedSrc}`);
 
   return (
     <Image
@@ -33,4 +32,3 @@ const ThemedImage: React.FC<ThemedImageProps> = ({ lightSrc, darkSrc, alt, ...re
 };
 
 export default ThemedImage;
-

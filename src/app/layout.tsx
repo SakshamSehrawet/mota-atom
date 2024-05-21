@@ -6,7 +6,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import Background from "@/components/Background";
-import BottomBar from "@/components/BottomBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +14,8 @@ export const metadata: Metadata = {
     template: "%s | Mota.atoM",
     absolute: "Mota.atoM",
   },
-  description: "Something",
+  description:
+    "Create or join contests with friends to see who losese more weight",
 };
 
 export default function RootLayout({
@@ -27,14 +27,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} min-w-[350px]`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <SessionProvider>
-            <Background>
-              <NavBar />
-              {children}
-              <Toaster />
-              <BottomBar/>
-           </Background>
-          </SessionProvider>
+            <SessionProvider>
+              <Background>
+                <NavBar />
+                {children}
+                <Toaster />
+              </Background>
+            </SessionProvider>
         </ThemeProvider>
       </body>
     </html>

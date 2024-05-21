@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 
+//TODO : Hide navbar on this page
 export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
