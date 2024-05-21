@@ -10,7 +10,8 @@ export function relativeDate(from: Date){
   return formatDistanceToNowStrict(from,{addSuffix: true})
 }
 export function avatarPlaceholder(seed:String){
-  return "https://api.dicebear.com/8.x/fun-emoji/svg?size=100&&seed="+"seed";
+  const uri : string = "https://api.dicebear.com/8.x/fun-emoji/svg?size=100&&seed="+`${seed}`;
+  return uri;
 }
 
 export function capitalize(str: string) {

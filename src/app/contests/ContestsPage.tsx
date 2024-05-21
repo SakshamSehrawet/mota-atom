@@ -35,7 +35,7 @@ export default function ContestsPage({ user }: ContestsPageProps) {
   }
 
   return (
-    <main className="px-3 pt-36">
+    <main className="">
         <section className="mx-auto max-w-7xl space-y-6">
           <h1 className="text-3xl font-bold">Contests</h1>
         </section>

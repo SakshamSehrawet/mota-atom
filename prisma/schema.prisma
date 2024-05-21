@@ -81,7 +81,7 @@ model Contest {
   needApproval Boolean @default(false)
   title String
   description String?
-  logo String? @default("./logoIconLight.png")
+  logo String? @default("https://an03zndvyobzyftt.public.blob.vercel-storage.com/atom-wqZn8Zac8rFQxYbXos0EtJ6cbKVokC.png")
   start DateTime
   end DateTime
   createdAt DateTime @default(now())

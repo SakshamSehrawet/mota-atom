@@ -30,7 +30,9 @@ export default function RootLayout({
             <SessionProvider>
               <Background>
                 <NavBar />
-                {children}
+                <div className="px-10 pt-32">
+                  {children}
+                </div>
                 <Toaster />
               </Background>
             </SessionProvider>

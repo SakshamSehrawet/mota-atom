@@ -4,7 +4,7 @@ import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,7 +18,6 @@ import {
 interface UserButtonProps {
   user: User;
 }
-
 export default function UserButton({ user }: UserButtonProps) {
   return (
     <DropdownMenu>
@@ -33,11 +32,21 @@ export default function UserButton({ user }: UserButtonProps) {
           />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-auto">
         <DropdownMenuLabel>
-          <div className="flex items-center gap-5">
-            {user.name || "User"}
-          </div>
+          <Link href={`/user/${user.id}`} className="flex items-center gap-2">
+            <Image
+              src={user.image || avatarPlaceholder}
+              alt="User profile picture"
+              width={40}
+              height={40}
+              className="aspect-square rounded-full bg-background object-cover"
+            />
+            <span>
+              {user.name || "User"}<br/>
+              <p className="text-xs">{user.email || "Email"}</p>
+            </span>
+          </Link>
           </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
@@ -58,12 +67,13 @@ export default function UserButton({ user }: UserButtonProps) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <button
+          <Button
+            variant="destructive"
             onClick={() => signOut({ callbackUrl: "/" })}
             className="flex w-full items-center"
           >
             <LogOut className="mr-2 h-4 w-4" /> Sign Out
-          </button>
+          </Button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
