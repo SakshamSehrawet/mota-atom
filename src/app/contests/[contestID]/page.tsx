@@ -40,7 +40,7 @@ const ContestDetailPage = async ({ params }: ContestDetailProps) => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto">
       <div className="rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
         <div className="flex flex-row gap-6">
           <div className="flex-shrink-0">

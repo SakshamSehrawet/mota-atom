@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuRadioItem, DropdownMenuRadioGroup } from "@/components/ui/dropdown-menu";
 import { SearchIcon, FilterIcon, ListIcon, UserIcon, CalendarIcon, CheckSquareIcon, TypeIcon } from "lucide-react";
 
-const SearchFilterSortBar: React.FC = () => {
+const ContestsFilter: React.FC = () => {
   return (
     <div className="flex items-center justify-between pl-0 pb-0 rounded-lg sm:w-11/12 md:w-11/12 lg:w-2/3 xl:w-1/2 shadow-lg">
       <div className="relative flex-1">
@@ -25,10 +25,6 @@ const SearchFilterSortBar: React.FC = () => {
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuLabel>Filter by</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem>
-            <UserIcon className="w-4 h-4 mr-2" />
-            Admin
-          </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>
             <TypeIcon className="w-4 h-4 mr-2" />
             Type
@@ -73,4 +69,4 @@ const SearchFilterSortBar: React.FC = () => {
   );
 };
 
-export default SearchFilterSortBar;
+export default ContestsFilter;
