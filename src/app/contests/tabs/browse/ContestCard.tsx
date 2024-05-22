@@ -20,6 +20,7 @@ import {
 import { Contest } from "@prisma/client";
 import { avatarPlaceholder, relativeDate } from "@/lib/utils";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 interface ContestCardProps {
   contest: Contest;
@@ -30,6 +31,9 @@ const truncateText = (text: string, length: number) => {
 };
 
 const ContestCard = ({ contest }: ContestCardProps) => {
+  const startDate = new Date(contest.start);
+  const endDate = new Date(contest.end);
+
   const truncatedDescription = truncateText(
     contest.description ||
       "Spooky! This contest is so mysterious, even we don't know what it's about!",
@@ -38,7 +42,7 @@ const ContestCard = ({ contest }: ContestCardProps) => {
 
   return (
     <Link href={`/contests/${contest.id}`} className="block">
-      <Card className="dark:bg-default-100/50 dark:hover:bg-default-100/80 flex min-w-96 flex-col justify-between border-none bg-background/50 hover:bg-background/80">
+      <Card className="dark:bg-default-100/50 dark:hover:bg-default-100/80 flex min-w-96 flex-col justify-between border-none bg-background/50 hover:bg-background/90">
         <article className="flex flex-grow flex-col">
           <div className="hidden shrink-0 flex-col items-end justify-start pr-2 pt-2 sm:flex">
             <Badge>{contest.type}</Badge>
@@ -117,14 +121,14 @@ const ContestCard = ({ contest }: ContestCardProps) => {
             <div className="flex items-center gap-2">
               <CalendarIcon className="h-4 w-4 text-gray-500 dark:text-gray-400" />
               <span className="text-sm text-gray-500 dark:text-gray-400">
-                {contest.start.toLocaleDateString()} -{" "}
-                {contest.end.toLocaleDateString()}
+              {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
               </span>
             </div>
-            <span className="flex items-center gap-2 text-xl">
-              Join
-              <MoveRight className="h-4 w-4" />
-            </span>
+            <Button variant="expandIcon" Icon={MoveRight} iconPlacement="right">
+              <span className="flex items-center gap-2 text-xl">
+                Join
+              </span>
+            </Button>
           </CardFooter>
         </article>
       </Card>

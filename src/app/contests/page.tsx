@@ -32,7 +32,7 @@ export default async function Page() {
   });
   const barMappings: { tooltip: string; icon: ReactNode; content: ReactNode }[] =
   [
-    { tooltip: "Browse Contests", icon: <Trophy />, content:<BrowseContestsTab contests={contests}/>},
+    { tooltip: "Browse Contests", icon: <Trophy />, content:<BrowseContestsTab initialContests={contests}/>},
     { tooltip: "My Contests", icon: <UserRoundCog />, content: <div>Settings Content</div> },
     { tooltip: "Create Contest", icon: <Plus />, content: <div>Create Content</div> },
   ]
