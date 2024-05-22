@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import BottomBar from "@/components/bottom-bar/BottomBar";
 import { Contest } from "@prisma/client";
+import CreateContestForm from "./tabs/create/CreateContestForm";
 
 export const metadata: Metadata = {
   title: "Contests",
@@ -34,7 +35,7 @@ export default async function Page() {
   [
     { tooltip: "Browse Contests", icon: <Trophy />, content:<BrowseContestsTab initialContests={contests}/>},
     { tooltip: "My Contests", icon: <UserRoundCog />, content: <div>Settings Content</div> },
-    { tooltip: "Create Contest", icon: <Plus />, content: <div>Create Content</div> },
+    { tooltip: "Create Contest", icon: <Plus />, content: <CreateContestForm/> },
   ]
 
   return (
